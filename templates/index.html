@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLIGRAM | Архитектура будущего</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header class="site-header" data-header>
+        <a class="brand" href="#home" aria-label="POLIGRAM">
+            <span>POLIGRAM</span>
+            <small>est. 2006</small>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+            <a href="#about">О компании</a>
+            <a href="#scale">Масштаб</a>
+            <a href="#tech">Технологии</a>
+            <a href="#projects">Проекты</a>
+            <a href="#partners">Партнеры</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero section" id="home">
+            <div class="arc arc-one"></div>
+            <div class="arc arc-two"></div>
+            <div class="hero-content">
+                <p class="kicker">Архитектура будущего, рассчитанная до миллиметра</p>
+                <h1>POLIGRAM</h1>
+                <p class="hero-services">Проектирование • Инжиниринг • Цифровые технологии строительства</p>
+            </div>
+            <div class="hero-meta">
+                <strong>est. 2006</strong>
+                <a href="https://www.poligram.kz">www.poligram.kz</a>
+            </div>
+        </section>
+
+        <section class="about section split-section" id="about">
+            <div class="section-copy">
+                <p class="section-number">01</p>
+                <h2>О компании</h2>
+                <p>ТОО «Poligram» — это полностью казахстанская компания, динамично развивающаяся на внутреннем рынке инжиниринга и строительства.</p>
+                <p>Мы используем опыт высококлассных специалистов для предоставления качественных услуг в нефтегазовом, промышленном и гражданском секторах.</p>
+                <div class="mission">
+                    <span>Наша цель</span>
+                    <p>Обеспечение безопасности и эффективности каждого объекта через инновационные проектные решения.</p>
+                </div>
+            </div>
+            <figure class="engineer-photo">
+                <img src="{% static 'img/pdf-image-p2-2.jpeg' %}" alt="Инженер работает за ноутбуком">
+            </figure>
+        </section>
+
+        <section class="section scale" id="scale">
+            <div class="section-heading">
+                <p class="section-number">02</p>
+                <h2>Масштабы бизнеса</h2>
+            </div>
+            <div class="stats-grid">
+                <article>
+                    <strong data-count="18">0</strong><span>+</span>
+                    <p>лет на рынке</p>
+                </article>
+                <article>
+                    <strong data-count="70">0</strong><span>+</span>
+                    <p>штатных экспертов</p>
+                </article>
+                <article>
+                    <strong data-count="5">0</strong>
+                    <p>филиалов по РК</p>
+                </article>
+                <article>
+                    <strong data-count="10">0</strong><span>+</span>
+                    <p>проф. отделов</p>
+                </article>
+            </div>
+            <p class="wide-note">Компания обладает достаточной материально-технической базой и всеми необходимыми ресурсами для оказания полного комплекса услуг по всем профилям.</p>
+        </section>
+
+        <section class="section tech" id="tech">
+            <div class="section-heading">
+                <p class="section-number">03</p>
+                <h2>Технологический потенциал в цифрах</h2>
+            </div>
+            <div class="tech-layout">
+                <article class="glass-panel">
+                    <strong>&gt;350+</strong>
+                    <p>успешно реализованных крупных проектов</p>
+                    <strong>100%</strong>
+                    <p>казахстанское содержание с развитой сетью из 5 региональных филиалов</p>
+                </article>
+                <article class="glass-panel">
+                    <strong>I категория</strong>
+                    <p>государственной лицензии на проектирование и СМР</p>
+                    <b>ISO 9001 / 14001 / 45001 / 50001</b>
+                    <p>международная сертификация систем менеджмента, экологии и безопасности</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section projects" id="projects">
+            <div class="section-heading centered">
+                <p class="section-number">04</p>
+                <h2>Текущие и перспективные проекты компании</h2>
+            </div>
+            <div class="projects-grid">
+                <article>
+                    <time>2024–2025</time>
+                    <h3>Энергетика</h3>
+                    <p>ПСД на строительство крупной водогрейной котельной мощностью 100 Гкал/час в г. Алматы для КГУ «Управление энергетики и водоснабжения».</p>
+                </article>
+                <article>
+                    <time>2025</time>
+                    <h3>Магистральные сети</h3>
+                    <p>Проектирование и перекладка стратегического подземного газопровода по проспекту Аль-Фараби для АО «QAZAQGAZ AIMAQ».</p>
+                </article>
+                <article>
+                    <time>2025</time>
+                    <h3>Транспорт и логистика</h3>
+                    <p>Проектирование и авторский надзор за строительством новых путей широкой колеи на станции Алтынколь для АО «НК «КТЖ».</p>
+                </article>
+                <article>
+                    <time>2025</time>
+                    <h3>СМР-инжиниринг</h3>
+                    <p>Разработка ПСД по монтажу систем греющего кабеля водостоков и усилению конструкций на НПС «Исатай» и «Курмангазы» для АО «КТК-К».</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section dynamics" id="dynamics">
+            <div class="chart-shell">
+                <div class="chart-topline">
+                    <div>
+                        <p class="section-number">05</p>
+                        <h2>Динамика реализации проектов</h2>
+                    </div>
+                    <span>2009–2025</span>
+                </div>
+                <canvas id="projectsChart" width="960" height="430" aria-label="График количества проектов по годам"></canvas>
+            </div>
+        </section>
+
+        <section class="section partners" id="partners">
+            <div class="section-heading">
+                <p class="section-number">06</p>
+                <h2>Нам доверяют лидеры рынка</h2>
+            </div>
+            <div class="logos-grid" aria-label="Логотипы партнеров">
+                {% for logo in "123456789" %}
+                    <img src="{% static 'img/pdf-image-p7-'|add:logo|add:'.png' %}" alt="Партнер Poligram">
+                {% endfor %}
+                <img src="{% static 'img/pdf-image-p7-10.png' %}" alt="Партнер Poligram">
+                <img src="{% static 'img/pdf-image-p7-11.png' %}" alt="Партнер Poligram">
+                <img src="{% static 'img/pdf-image-p7-12.png' %}" alt="Партнер Poligram">
+                <img src="{% static 'img/pdf-image-p7-13.png' %}" alt="Партнер Poligram">
+                <img src="{% static 'img/pdf-image-p7-14.png' %}" alt="Партнер Poligram">
+                <img src="{% static 'img/pdf-image-p7-15.png' %}" alt="Партнер Poligram">
+                <img src="{% static 'img/pdf-image-p7-16.png' %}" alt="Партнер Poligram">
+                <img src="{% static 'img/pdf-image-p7-17.png' %}" alt="Партнер Poligram">
+            </div>
+        </section>
+
+        <section class="section contacts split-section" id="contacts">
+            <figure class="engineer-photo contacts-photo">
+                <img src="{% static 'img/pdf-image-p8-2.jpeg' %}" alt="Инженерная работа POLIGRAM">
+            </figure>
+            <div class="contact-card">
+                <p class="section-number">07</p>
+                <h2>ТОО «Poligram»</h2>
+                <dl>
+                    <div><dt>БИН</dt><dd>060940002732</dd></div>
+                    <div><dt>Юридический адрес</dt><dd>Республика Казахстан, Атырау, улица Жәнібек Хан, дом 30</dd></div>
+                    <div><dt>Фактический адрес</dt><dd>г. Атырау, ул. Талгата Бигельдинова, 51, 3-й этаж</dd></div>
+                    <div><dt>IBAN</dt><dd>KZ47601A141000308811</dd></div>
+                    <div><dt>Банк</dt><dd>АО «Народный Банк Казахстан», БИК HSBKKZKX</dd></div>
+                    <div><dt>Телефон</dt><dd><a href="tel:+77122305137">8 (7122) 30 51 37</a></dd></div>
+                    <div><dt>Email</dt><dd><a href="mailto:info@poligram.kz">info@poligram.kz</a></dd></div>
+                    <div><dt>Директор</dt><dd>Баязитов Г.И.</dd></div>
+                </dl>
+            </div>
+        </section>
+    </main>
+
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
