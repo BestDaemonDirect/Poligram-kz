@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLIGRAM | Архитектура будущего</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <header class="site-header" data-header>
+        <a class="brand" href="#home" aria-label="POLIGRAM">
+            <span>POLIGRAM</span>
+            <small>est. 2006</small>
+        </a>
+        <div class="lang-switcher" role="group" aria-label="Language switcher">
+            <button type="button" class="lang-button is-active" data-lang="ru">RU</button>
+            <button type="button" class="lang-button" data-lang="en">EN</button>
+            <button type="button" class="lang-button" data-lang="kk">KK</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="site-nav" data-nav>
+            <a href="#about" data-i18n="nav.about">О компании</a>
+            <a href="#scale" data-i18n="nav.scale">Масштаб</a>
+            <a href="#tech" data-i18n="nav.tech">Технологии</a>
+            <a href="#projects" data-i18n="nav.projects">Проекты</a>
+            <a href="#partners" data-i18n="nav.partners">Партнеры</a>
+            <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero section" id="home">
+            <div class="arc arc-one"></div>
+            <div class="arc arc-two"></div>
+            <div class="hero-content">
+                <p class="kicker" data-i18n="hero.kicker">Архитектура будущего, рассчитанная до миллиметра</p>
+                <h1 data-i18n="hero.title">POLIGRAM</h1>
+                <p class="hero-services" data-i18n="hero.services">Проектирование • Инжиниринг • Цифровые технологии строительства</p>
+            </div>
+            <div class="hero-meta">
+                <strong>est. 2006</strong>
+                <a href="https://www.poligram.kz">www.poligram.kz</a>
+            </div>
+        </section>
+
+        <section class="about section split-section" id="about">
+            <div class="section-copy">
+                <h2 data-i18n="about.title">О компании</h2>
+                <p data-i18n="about.description1">ТОО «Poligram» — это полностью казахстанская компания, динамично развивающаяся на внутреннем рынке инжиниринга и строительства.</p>
+                <p data-i18n="about.description2">Мы используем опыт высококлассных специалистов для предоставления качественных услуг в нефтегазовом, промышленном и гражданском секторах.</p>
+                <div class="mission">
+                    <span data-i18n="about.goal">Наша цель</span>
+                    <p data-i18n="about.goalDescription">Обеспечение безопасности и эффективности каждого объекта через инновационные проектные решения.</p>
+                </div>
+            </div>
+            <figure class="engineer-photo">
+                <img src="{% static 'img/engineer.jpeg' %}" alt="Инженер работает за ноутбуком">
+            </figure>
+        </section>
+
+        <section class="section scale" id="scale">
+            <div class="section-heading">
+                <h2 data-i18n="scale.title">Масштабы бизнеса</h2>
+            </div>
+            <div class="stats-grid">
+                <article>
+                    <strong data-count="18">0</strong><span>+</span>
+                    <p data-i18n="scale.years">лет на рынке</p>
+                </article>
+                <article>
+                    <strong data-count="70">0</strong><span>+</span>
+                    <p data-i18n="scale.experts">штатных экспертов</p>
+                </article>
+                <article>
+                    <strong data-count="5">0</strong>
+                    <p data-i18n="scale.branches">филиалов по РК</p>
+                </article>
+                <article>
+                    <strong data-count="10">0</strong><span>+</span>
+                    <p data-i18n="scale.departments">проф. отделов</p>
+                </article>
+            </div>
+            <p class="wide-note" data-i18n="scale.note">Компания обладает достаточной материально-технической базой и всеми необходимыми ресурсами для оказания полного комплекса услуг по всем профилям.</p>
+        </section>
+
+        <section class="section tech" id="tech">
+            <div class="section-heading">
+                <h2 data-i18n="tech.title">Технологический потенциал в цифрах</h2>
+            </div>
+            <div class="tech-layout">
+                <article class="glass-panel">
+                    <strong>&gt;350+</strong>
+                    <p data-i18n="tech.projects">успешно реализованных крупных проектов</p>
+                    <strong>100%</strong>
+                    <p data-i18n="tech.localContent">казахстанское содержание с развитой сетью из 5 региональных филиалов</p>
+                </article>
+                <article class="glass-panel">
+                    <strong>I категория</strong>
+                    <p data-i18n="tech.license">государственной лицензии на проектирование и СМР</p>
+                    <b>ISO 9001 / 14001 / 45001 / 50001</b>
+                    <p data-i18n="tech.certification">международная сертификация систем менеджмента, экологии и безопасности</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section projects" id="projects">
+            <div class="section-heading centered">
+                <h2 data-i18n="projects.title">Текущие и перспективные проекты компании</h2>
+            </div>
+            <div class="projects-grid">
+                <article>
+                    <time>2024–2025</time>
+                    <h3 data-i18n="projects.energy.title">Энергетика</h3>
+                    <p data-i18n="projects.energy.description">ПСД на строительство крупной водогрейной котельной мощностью 100 Гкал/час в г. Алматы для КГУ «Управление энергетики и водоснабжения».</p>
+                </article>
+                <article>
+                    <time>2025</time>
+                    <h3 data-i18n="projects.networks.title">Магистральные сети</h3>
+                    <p data-i18n="projects.networks.description">Проектирование и перекладка стратегического подземного газопровода по проспекту Аль-Фараби для АО «QAZAQGAZ AIMAQ».</p>
+                </article>
+                <article>
+                    <time>2025</time>
+                    <h3 data-i18n="projects.transport.title">Транспорт и логистика</h3>
+                    <p data-i18n="projects.transport.description">Проектирование и авторский надзор за строительством новых путей широкой колеи на станции Алтынколь для АО «НК «КТЖ».</p>
+                </article>
+                <article>
+                    <time>2025</time>
+                    <h3 data-i18n="projects.engineering.title">СМР-инжиниринг</h3>
+                    <p data-i18n="projects.engineering.description">Разработка ПСД по монтажу систем греющего кабеля водостоков и усилению конструкций на НПС «Исатай» и «Курмангазы» для АО «КТК-К».</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section dynamics" id="dynamics">
+            <div class="chart-shell">
+                <div class="chart-topline">
+                    <div>
+                        <h2 data-i18n="dynamics.title">Динамика реализации проектов</h2>
+                    </div>
+                    <span class="chart-range" data-i18n="dynamics.range">2009–2025</span>
+                </div>
+                <canvas id="projectsChart" width="960" height="430" aria-label="График количества проектов по годам"></canvas>
+            </div>
+        </section>
+
+        <section class="section partners" id="partners">
+            <div class="section-heading">
+                <h2 data-i18n="partners.title">Нам доверяют лидеры рынка</h2>
+            </div>
+            <div class="partner-marquee" aria-label="Лента логотипов партнеров">
+                <div class="marquee-track">
+                    {% for logo in "123456789" %}
+                        <img src="{% static 'img/pdf-image-p7-'|add:logo|add:'.png' %}" alt="Логотип партнера">
+                    {% endfor %}
+                    <img src="{% static 'img/pdf-image-p7-10.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-11.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-12.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-13.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-14.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-15.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-16.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-17.png' %}" alt="Логотип партнера">
+                    {% for logo in "123456789" %}
+                        <img src="{% static 'img/pdf-image-p7-'|add:logo|add:'.png' %}" alt="Логотип партнера">
+                    {% endfor %}
+                    <img src="{% static 'img/pdf-image-p7-10.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-11.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-12.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-13.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-14.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-15.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-16.png' %}" alt="Логотип партнера">
+                    <img src="{% static 'img/pdf-image-p7-17.png' %}" alt="Логотип партнера">
+                </div>
+            </div>
+        </section>
+
+        <section class="section contacts split-section" id="contacts">
+            <figure class="engineer-photo contacts-photo">
+                <img src="{% static 'img/engineer.jpeg' %}" alt="Инженерная работа POLIGRAM">
+            </figure>
+            <div class="contact-card">
+                <h2 data-i18n="contacts.title">ТОО «Poligram»</h2>
+                <dl>
+                    <div><dt data-i18n="contacts.bin.label">БИН</dt><dd>060940002732</dd></div>
+                    <div><dt data-i18n="contacts.legal.label">Юридический адрес</dt><dd data-i18n="contacts.legal.value">Республика Казахстан, Атырау, улица Жәнібек Хан, дом 30</dd></div>
+                    <div><dt data-i18n="contacts.actual.label">Фактический адрес</dt><dd data-i18n="contacts.actual.value">г. Атырау, ул. Талгата Бигельдинова, 51, 3-й этаж</dd></div>
+                    <div><dt data-i18n="contacts.iban.label">IBAN</dt><dd>KZ47601A141000308811</dd></div>
+                    <div><dt data-i18n="contacts.bank.label">Банк</dt><dd data-i18n="contacts.bank.value">АО «Народный Банк Казахстан», БИК HSBKKZKX</dd></div>
+                    <div><dt data-i18n="contacts.phone.label">Телефон</dt><dd><a href="tel:+77122305137" data-i18n="contacts.phone.value">8 (7122) 30 51 37</a></dd></div>
+                    <div><dt data-i18n="contacts.email.label">Email</dt><dd><a href="mailto:info@poligram.kz">info@poligram.kz</a></dd></div>
+                    <div><dt data-i18n="contacts.ceo.label">Директор</dt><dd data-i18n="contacts.ceo.value">Баязитов Г.И.</dd></div>
+                </dl>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span>POLIGRAM</span>
+                <small>est. 2006</small>
+            </div>
+            <p data-i18n="footer.text">ТОО «Poligram» — инженерная компания с полным циклом проектирования и цифровыми решениями для крупных объектов.</p>
+            <div class="footer-links">
+                <a href="#contacts" data-i18n="footer.links.contacts">Контакты</a>
+                <a href="#partners" data-i18n="footer.links.partners">Партнёры</a>
+                <a href="#about" data-i18n="footer.links.about">О компании</a>
+            </div>
+            <p class="footer-copy" data-i18n="footer.copy">© 2025 POLIGRAM. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
