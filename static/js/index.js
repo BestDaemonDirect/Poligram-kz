@@ -2,6 +2,7 @@ const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 
+let scrollTimeout;
 const setHeaderState = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 18);
 };
@@ -28,7 +29,62 @@ const counterObserver = new IntersectionObserver((entries) => {
 
         const element = entry.target;
         const target = Number(element.dataset.count);
-        const duration = 900;
+        const duration = 800;
+
+    /* Mouse-driven subtle parallax for the page background.
+       Uses background-position updates (throttled via rAF) and respects
+       prefers-reduced-motion. Disabled on small screens. */
+    (function() {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const el = document.querySelector('.interactive-bg');
+        if (!el) return;
+
+        let mouseX = 0, mouseY = 0;
+        let rafId = null;
+        const strength = 6; // max percent offset
+
+        function update() {
+            rafId = null;
+            const posX = 50 + mouseX * strength;
+            const posY = 50 + mouseY * (strength * 0.6);
+            el.style.backgroundPosition = `${posX}% ${posY}%`;
+        }
+
+        function onMove(e) {
+            const rect = document.documentElement.getBoundingClientRect();
+            const x = (e.touches ? e.touches[0].clientX : e.clientX) || 0;
+            const y = (e.touches ? e.touches[0].clientY : e.clientY) || 0;
+            // normalize to -1..1
+            mouseX = ((x - rect.left) / rect.width - 0.5) * 2;
+            mouseY = ((y - rect.top) / rect.height - 0.5) * 2;
+            if (!rafId) rafId = requestAnimationFrame(update);
+        }
+
+        function reset() {
+            if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+            el.style.backgroundPosition = '50% 50%';
+        }
+
+        // Disable on small screens for touch UX/performance
+        function isSmall() { return window.innerWidth <= 640; }
+
+        function startListeners() {
+            window.addEventListener('mousemove', onMove, { passive: true });
+            window.addEventListener('touchmove', onMove, { passive: true });
+            window.addEventListener('mouseleave', reset, { passive: true });
+        }
+
+        function stopListeners() {
+            window.removeEventListener('mousemove', onMove);
+            window.removeEventListener('touchmove', onMove);
+            window.removeEventListener('mouseleave', reset);
+        }
+
+        if (!isSmall()) startListeners();
+        window.addEventListener('resize', () => {
+            if (isSmall()) stopListeners(); else startListeners();
+        });
+    })();
         const start = performance.now();
 
         const tick = (time) => {
@@ -378,16 +434,8 @@ if (canvas) {
             const x = padding.left + index * (barWidth + gap);
             const barHeight = (value / max) * chartHeight;
             const y = padding.top + chartHeight - barHeight;
-            const gradient = context.createLinearGradient(0, y, 0, y + barHeight);
-            gradient.addColorStop(0, "rgba(55, 182, 255, 0.95)");
-            gradient.addColorStop(1, "rgba(20, 120, 210, 0.45)");
-            context.fillStyle = gradient;
-            context.shadowColor = "rgba(29, 146, 255, 0.28)";
-            context.shadowBlur = 16;
-            context.shadowOffsetY = 6;
+            context.fillStyle = "rgba(55, 182, 255, 0.8)";
             context.fillRect(x, y, barWidth, barHeight);
-            context.shadowBlur = 0;
-            context.shadowOffsetY = 0;
             context.strokeStyle = "rgba(255, 255, 255, 0.65)";
             context.strokeRect(x, y, barWidth, barHeight);
 
@@ -416,5 +464,11 @@ if (canvas) {
     };
 
     drawChart();
-    window.addEventListener("resize", drawChart);
+    
+    // Throttled resize handler
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(drawChart, 250);
+    });
 }
