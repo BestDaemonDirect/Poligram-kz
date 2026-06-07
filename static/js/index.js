@@ -168,6 +168,7 @@ const translations = {
         "tech.projects": "успешно реализованных крупных проектов",
         "tech.localContent": "казахстанское содержание с развитой сетью из 5 региональных филиалов",
         "tech.license": "государственной лицензии на проектирование и СМР",
+        "tech.category": "I категория",
         "tech.certification": "международная сертификация систем менеджмента, экологии и безопасности",
         "projects.title": "Текущие и перспективные проекты компании",
         "projects.energy.title": "Энергетика",
@@ -232,6 +233,7 @@ const translations = {
         "tech.projects": "successfully completed large-scale projects",
         "tech.localContent": "100% Kazakhstani content with a developed network of 5 regional offices",
         "tech.license": "state license for design and construction works",
+        "tech.category": "Category I",
         "tech.certification": "international certification of management, environment, and safety systems",
         "projects.title": "Current and future company projects",
         "projects.energy.title": "Energy",
@@ -296,6 +298,7 @@ const translations = {
         "tech.projects": "сәтті жүзеге асырылған ірі жобалар",
         "tech.localContent": "5 өңірлік филиалдан тұратын 100% қазақстандық құрам",
         "tech.license": "жобалау және құрылыс жұмыстарын орындауға мемлекеттік лицензия",
+        "tech.category": "I санат",
         "tech.certification": "басқару, экология және қауіпсіздік жүйелерінің халықаралық сертификаты",
         "projects.title": "Компанияның ағымдағы және перспективалы жобалары",
         "projects.energy.title": "Энергетика",
@@ -401,12 +404,18 @@ if (canvas) {
         const max = 90;
 
         context.clearRect(0, 0, width, height);
-        context.fillStyle = "#202528";
+        const backGradient = context.createLinearGradient(0, 0, 0, height);
+        backGradient.addColorStop(0, "rgba(234, 243, 255, 0.95)");
+        backGradient.addColorStop(1, "rgba(215, 230, 255, 0.95)");
+        context.fillStyle = backGradient;
         context.fillRect(0, 0, width, height);
-        context.fillStyle = "rgba(255, 255, 255, 0.05)";
+
+        context.fillStyle = "rgba(255, 255, 255, 0.95)";
         context.fillRect(padding.left, padding.top, chartWidth, chartHeight);
-        context.strokeStyle = "rgba(255, 255, 255, 0.16)";
+
+        context.strokeStyle = "rgba(15, 50, 100, 0.14)";
         context.lineWidth = 1;
+        context.setLineDash([4, 6]);
 
         for (let tick = 0; tick <= max; tick += 20) {
             const y = padding.top + chartHeight - (tick / max) * chartHeight;
@@ -414,35 +423,40 @@ if (canvas) {
             context.moveTo(padding.left, y);
             context.lineTo(width - padding.right, y);
             context.stroke();
-            context.fillStyle = "rgba(255, 255, 255, 0.66)";
+            context.fillStyle = "rgba(15, 50, 100, 0.65)";
             context.font = "12px Arial";
             context.textAlign = "right";
             context.fillText(String(tick), padding.left - 10, y + 4);
         }
 
+        context.setLineDash([]);
         context.beginPath();
-        context.moveTo(padding.left, height - padding.bottom + 1);
+        context.moveTo(padding.left, padding.top);
+        context.lineTo(padding.left, height - padding.bottom + 1);
         context.lineTo(width - padding.right, height - padding.bottom + 1);
-        context.strokeStyle = "rgba(255, 255, 255, 0.28)";
+        context.strokeStyle = "rgba(15, 50, 100, 0.2)";
         context.stroke();
 
-        const gap = 8;
+        const gap = 10;
         const barWidth = Math.max(8, (chartWidth - gap * (values.length - 1)) / values.length);
         const labelStep = chartWidth / values.length < 40 ? 3 : chartWidth / values.length < 55 ? 2 : 1;
+        const barGradient = context.createLinearGradient(0, padding.top, 0, height - padding.bottom);
+        barGradient.addColorStop(0, "rgba(29, 134, 255, 0.95)");
+        barGradient.addColorStop(1, "rgba(17, 37, 74, 0.9)");
 
         values.forEach((value, index) => {
             const x = padding.left + index * (barWidth + gap);
             const barHeight = (value / max) * chartHeight;
             const y = padding.top + chartHeight - barHeight;
-            context.fillStyle = "rgba(55, 182, 255, 0.8)";
+            context.fillStyle = barGradient;
             context.fillRect(x, y, barWidth, barHeight);
-            context.strokeStyle = "rgba(255, 255, 255, 0.65)";
+            context.strokeStyle = "rgba(15, 50, 100, 0.22)";
             context.strokeRect(x, y, barWidth, barHeight);
 
             if (index % labelStep === 0) {
                 context.save();
                 context.translate(x + barWidth / 2, height - padding.bottom + 22);
-                context.fillStyle = "rgba(255, 255, 255, 0.78)";
+                context.fillStyle = "rgba(15, 50, 100, 0.85)";
                 context.font = "10px Arial";
                 context.textAlign = "center";
                 context.fillText(String(years[index]), 0, 0);
@@ -451,7 +465,7 @@ if (canvas) {
         });
 
         const chartLabels = chartLabelsByLang[currentChartLang] || chartLabelsByLang.ru;
-        context.fillStyle = "rgba(255, 255, 255, 0.78)";
+        context.fillStyle = "rgba(15, 50, 100, 0.95)";
         context.font = "13px Arial";
         context.textAlign = "center";
         context.fillText(chartLabels.xAxis, padding.left + chartWidth / 2, height - 14);
