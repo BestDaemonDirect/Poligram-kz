@@ -1,11 +1,10 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POLIGRAM | Архитектура будущего</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     <header class="site-header" data-header>
@@ -58,7 +57,7 @@
                 </div>
             </div>
             <figure class="engineer-photo">
-                <img src="{% static 'img/engineer.jpeg' %}" alt="Инженер работает за ноутбуком">
+                <img src="{{ url_for('static', filename='img/engineer.jpeg') }}" alt="Инженер работает за ноутбуком">
             </figure>
         </section>
 
@@ -154,34 +153,34 @@
             <div class="partner-marquee" aria-label="Лента логотипов партнеров">
                 <div class="marquee-track">
                     {% for logo in "123456789" %}
-                        <img src="{% static 'img/pdf-image-p7-'|add:logo|add:'.png' %}" alt="Логотип партнера">
+                        <img src="{{ url_for('static', filename='img/pdf-image-p7-' + logo + '.png') }}" alt="Логотип партнера">
                     {% endfor %}
-                    <img src="{% static 'img/pdf-image-p7-10.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-11.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-12.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-13.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-14.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-15.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-16.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-17.png' %}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-10.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-11.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-12.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-13.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-14.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-15.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-16.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-17.png') }}" alt="Логотип партнера">
                     {% for logo in "123456789" %}
-                        <img src="{% static 'img/pdf-image-p7-'|add:logo|add:'.png' %}" alt="Логотип партнера">
+                        <img src="{{ url_for('static', filename='img/pdf-image-p7-' + logo + '.png') }}" alt="Логотип партнера">
                     {% endfor %}
-                    <img src="{% static 'img/pdf-image-p7-10.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-11.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-12.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-13.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-14.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-15.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-16.png' %}" alt="Логотип партнера">
-                    <img src="{% static 'img/pdf-image-p7-17.png' %}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-10.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-11.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-12.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-13.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-14.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-15.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-16.png') }}" alt="Логотип партнера">
+                    <img src="{{ url_for('static', filename='img/pdf-image-p7-17.png') }}" alt="Логотип партнера">
                 </div>
             </div>
         </section>
 
         <section class="section contacts split-section" id="contacts">
             <figure class="engineer-photo contacts-photo">
-                <img src="{% static 'img/engineer.jpeg' %}" alt="Инженерная работа POLIGRAM">
+                <img src="{{ url_for('static', filename='img/engineer.jpeg') }}" alt="Инженерная работа POLIGRAM">
             </figure>
             <div class="contact-card">
                 <h2 data-i18n="contacts.title">ТОО «Poligram»</h2>
@@ -215,6 +214,6 @@
         </div>
     </footer>
 
-    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
