@@ -828,12 +828,13 @@ canvas {
 
 .partner-marquee img,
 .marquee-track img {
+   
     display: block;
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 200px;
     padding: 12px;
     border-radius: 12px;
-    background: rgba(17, 37, 74, 0.08);
+    background: rgba(255, 255, 255, 0.08);
     object-fit: contain;
     opacity: 0.92;
     filter: none;
@@ -854,19 +855,7 @@ canvas {
 }
 
 .partner-marquee img,
-.marquee-track img {
-    display: block;
-    width: 140px;
-    height: 140px;
-    padding: 12px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.04);
-    object-fit: contain;
-    opacity: 0.82;
-    filter: none;
-    transition: none;
-    flex-shrink: 0;
-}
+
 
 .marquee-track img:hover {
     transform: none;
