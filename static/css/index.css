@@ -886,8 +886,7 @@ dd {
     }
 }
 
-/* Планшеты (641px - 980px) */
-@media (min-width: 641px) and (max-width: 980px) {
+@media (max-width: 980px) {
     .site-nav {
         position: absolute;
         top: 100%;
@@ -897,8 +896,9 @@ dd {
         padding: 18px;
         background: rgba(255, 255, 255, 0.98);
         border: 1px solid rgba(29, 134, 255, 0.16);
-        border-radius: 12px;
-        box-shadow: 0 8px 28px rgba(18, 52, 103, 0
+        flex-direction: column;
+        align-items: stretch;
+    }
 
     .site-nav.is-open {
         display: flex;
