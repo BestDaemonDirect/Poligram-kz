@@ -1,24 +1,107 @@
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
-const nav = document.querySelector("[data-nav]");
+const desktopNav = document.querySelector("[data-nav]");
+const mobileSidebarTitle = document.querySelector(".brand span")?.textContent?.trim() || "Company Name";
 
+let mobileMenuOverlay;
 let scrollTimeout;
 const setHeaderState = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 18);
 };
 
+const isMobileMenu = () => window.matchMedia('(max-width: 980px)').matches;
+
+const createMobileMenu = () => {
+    if (mobileMenuOverlay) return mobileMenuOverlay;
+    mobileMenuOverlay = document.createElement('div');
+    mobileMenuOverlay.className = 'mobile-nav-overlay';
+    mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+
+    const panel = document.createElement('div');
+    panel.className = 'mobile-nav-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-label', 'Mobile navigation menu');
+
+    const closeBar = document.createElement('button');
+    closeBar.type = 'button';
+    closeBar.className = 'mobile-nav-close';
+    closeBar.setAttribute('aria-label', 'Close menu');
+    closeBar.textContent = '✕';
+    closeBar.addEventListener('click', closeMenu);
+
+    const title = document.createElement('div');
+    title.className = 'mobile-nav-title';
+    title.textContent = mobileSidebarTitle;
+
+    const description = document.createElement('p');
+    description.className = 'mobile-nav-description';
+    description.textContent = 'Delivering full-cycle design, engineering and digital construction solutions for major projects.';
+
+    const clonedNav = document.createElement('nav');
+    clonedNav.className = 'mobile-nav';
+    clonedNav.setAttribute('aria-label', 'Mobile navigation');
+
+    if (desktopNav) {
+        desktopNav.querySelectorAll('a').forEach((link) => {
+            const clonedLink = link.cloneNode(true);
+            clonedLink.classList.add('mobile-nav-link');
+            clonedLink.addEventListener('click', closeMenu);
+            clonedNav.appendChild(clonedLink);
+        });
+    }
+
+    panel.appendChild(closeBar);
+    panel.appendChild(title);
+    panel.appendChild(description);
+    panel.appendChild(clonedNav);
+    mobileMenuOverlay.appendChild(panel);
+    document.body.appendChild(mobileMenuOverlay);
+
+    mobileMenuOverlay.addEventListener('click', (event) => {
+        if (event.target === mobileMenuOverlay) {
+            closeMenu();
+        }
+    });
+
+    return mobileMenuOverlay;
+};
+
+const openMenu = () => {
+    if (!isMobileMenu()) return;
+    const overlay = createMobileMenu();
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    menuToggle?.setAttribute('aria-expanded', 'true');
+    menuToggle?.classList.add('is-active');
+    document.body.classList.add('menu-open');
+};
+
+const closeMenu = () => {
+    if (!mobileMenuOverlay?.classList.contains('is-open')) return;
+    mobileMenuOverlay.classList.remove('is-open');
+    mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    menuToggle?.classList.remove('is-active');
+    document.body.classList.remove('menu-open');
+};
+
 setHeaderState();
 window.addEventListener("scroll", setHeaderState, { passive: true });
 
-menuToggle?.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+menuToggle?.addEventListener("click", (event) => {
+    if (!isMobileMenu()) return;
+    event.stopPropagation();
+    if (mobileMenuOverlay?.classList.contains('is-open')) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
 });
 
-nav?.addEventListener("click", (event) => {
-    if (event.target instanceof HTMLAnchorElement) {
-        nav.classList.remove("is-open");
-        menuToggle?.setAttribute("aria-expanded", "false");
+window.addEventListener("resize", () => {
+    if (!isMobileMenu()) {
+        closeMenu();
     }
 });
 
@@ -387,21 +470,24 @@ if (canvas) {
     drawChart = () => {
         const dpr = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
-        canvas.width = Math.round(rect.width * dpr);
-        canvas.height = Math.round(rect.width * 0.45 * dpr);
-        context.setTransform(dpr, 0, 0, dpr, 0, 0);
-
         const width = rect.width;
-        const height = rect.width * 0.45;
+        const isMobile = width <= 540;
+        const height = isMobile ? Math.max(300, width * 0.82) : width * 0.45;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        context.setTransform(dpr, 0, 0, dpr, 0, 0);
         const padding = {
-            top: 22,
-            right: 18,
-            bottom: 62,
-            left: 58
+            top: isMobile ? 18 : 22,
+            right: isMobile ? 12 : 18,
+            bottom: isMobile ? 96 : 62,
+            left: isMobile ? 44 : 58
         };
         const chartWidth = width - padding.left - padding.right;
         const chartHeight = height - padding.top - padding.bottom;
+        const pointCount = Math.min(years.length, values.length);
         const max = 90;
+
+        if (pointCount === 0) return;
 
         context.clearRect(0, 0, width, height);
         const backGradient = context.createLinearGradient(0, 0, 0, height);
@@ -412,6 +498,11 @@ if (canvas) {
 
         context.fillStyle = "rgba(255, 255, 255, 0.95)";
         context.fillRect(padding.left, padding.top, chartWidth, chartHeight);
+
+        const labelFontSize = isMobile ? 11 : 12;
+        const axisFontSize = isMobile ? 12 : 13;
+        const yearFontSize = isMobile ? 10 : 10;
+        const gap = isMobile ? 6 : 10;
 
         context.strokeStyle = "rgba(15, 50, 100, 0.14)";
         context.lineWidth = 1;
@@ -424,7 +515,7 @@ if (canvas) {
             context.lineTo(width - padding.right, y);
             context.stroke();
             context.fillStyle = "rgba(15, 50, 100, 0.65)";
-            context.font = "12px Arial";
+            context.font = `${labelFontSize}px Arial`;
             context.textAlign = "right";
             context.fillText(String(tick), padding.left - 10, y + 4);
         }
@@ -437,14 +528,22 @@ if (canvas) {
         context.strokeStyle = "rgba(15, 50, 100, 0.2)";
         context.stroke();
 
-        const gap = 10;
-        const barWidth = Math.max(8, (chartWidth - gap * (values.length - 1)) / values.length);
-        const labelStep = chartWidth / values.length < 40 ? 3 : chartWidth / values.length < 55 ? 2 : 1;
+        const barWidth = Math.max(isMobile ? 6 : 8, (chartWidth - gap * (pointCount - 1)) / pointCount);
+        const labelStep = isMobile
+            ? chartWidth / pointCount < 30
+                ? 4
+                : chartWidth / pointCount < 45
+                    ? 3
+                    : 2
+            : chartWidth / pointCount < 55
+                ? 2
+                : 1;
         const barGradient = context.createLinearGradient(0, padding.top, 0, height - padding.bottom);
         barGradient.addColorStop(0, "rgba(29, 134, 255, 0.95)");
         barGradient.addColorStop(1, "rgba(17, 37, 74, 0.9)");
 
-        values.forEach((value, index) => {
+        for (let index = 0; index < pointCount; index++) {
+            const value = values[index];
             const x = padding.left + index * (barWidth + gap);
             const barHeight = (value / max) * chartHeight;
             const y = padding.top + chartHeight - barHeight;
@@ -453,26 +552,27 @@ if (canvas) {
             context.strokeStyle = "rgba(15, 50, 100, 0.22)";
             context.strokeRect(x, y, barWidth, barHeight);
 
-            if (index % labelStep === 0) {
+            if (index === 0 || index === pointCount - 1 || index % labelStep === 0) {
                 context.save();
-                context.translate(x + barWidth / 2, height - padding.bottom + 22);
+                context.translate(x + barWidth / 2, height - padding.bottom + (isMobile ? 26 : 22));
                 context.fillStyle = "rgba(15, 50, 100, 0.85)";
-                context.font = "10px Arial";
+                context.font = `${yearFontSize}px Arial`;
                 context.textAlign = "center";
                 context.fillText(String(years[index]), 0, 0);
                 context.restore();
             }
-        });
+        }
 
         const chartLabels = chartLabelsByLang[currentChartLang] || chartLabelsByLang.ru;
         context.fillStyle = "rgba(15, 50, 100, 0.95)";
-        context.font = "13px Arial";
+        context.font = `${axisFontSize}px Arial`;
         context.textAlign = "center";
         context.fillText(chartLabels.xAxis, padding.left + chartWidth / 2, height - 14);
 
         context.save();
-        context.translate(16, padding.top + chartHeight / 2);
+        context.translate(isMobile ? 18 : 16, padding.top + chartHeight / 2);
         context.rotate(-Math.PI / 2);
+        context.font = `${axisFontSize}px Arial`;
         context.fillText(chartLabels.yAxis, 0, 0);
         context.restore();
     };
