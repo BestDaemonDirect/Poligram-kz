@@ -173,6 +173,14 @@ img {
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 45px;
+    width: auto;
+    max-height: 50px;
+    object-fit: contain;
 }
 
 .brand span {
@@ -717,6 +725,47 @@ h2 {
     color: rgba(17, 37, 74, 0.82);
 }
 
+.licenses-description {
+    max-width: 600px;
+    margin: 0 auto 36px;
+    text-align: center;
+    font-size: clamp(16px, 1.8vw, 18px);
+    color: rgba(15, 50, 100, 0.76);
+}
+
+.licenses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.license-item {
+    padding: clamp(24px, 3vw, 32px);
+    background: rgba(255, 255, 255, 0.94);
+    border-left: 4px solid var(--blue-light);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(18, 52, 103, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.license-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(29, 134, 255, 0.12);
+}
+
+.license-item h3 {
+    margin: 0 0 8px;
+    font-size: clamp(16px, 1.8vw, 18px);
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+.license-item p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(17, 37, 74, 0.7);
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -969,6 +1018,13 @@ dd {
     font-size: 1.15rem;
 }
 
+.footer-logo {
+    height: 40px;
+    width: auto;
+    max-height: 45px;
+    object-fit: contain;
+}
+
 .footer-brand small {
     font-size: 0.85rem;
     color: rgba(17, 37, 74, 0.6);
@@ -1035,7 +1091,8 @@ dd {
 
     .stats-grid,
     .projects-grid,
-    .tech-layout {
+    .tech-layout,
+    .licenses-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -1089,7 +1146,8 @@ dd {
 
     .stats-grid,
     .projects-grid,
-    .tech-layout {
+    .tech-layout,
+    .licenses-grid {
         grid-template-columns: 1fr;
     }
 

@@ -9,8 +9,7 @@
 <body>
     <header class="site-header" data-header>
         <a class="brand" href="#home" aria-label="POLIGRAM">
-            <span>POLIGRAM</span>
-            <small>est. 2006</small>
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="POLIGRAM Logo" class="brand-logo">
         </a>
         <div class="lang-switcher" role="group" aria-label="Language switcher">
             <button type="button" class="lang-button is-active" data-lang="ru">RU</button>
@@ -129,6 +128,35 @@
             </div>
         </section>
 
+        <section class="section licenses" id="licenses">
+            <div class="section-heading">
+                <h2 data-i18n="licenses.title">Лицензии</h2>
+            </div>
+            <p class="licenses-description" data-i18n="licenses.description">Полный пакет лицензий для реализации проектов любой сложности в нефтегазовой и строительной отраслях</p>
+            <div class="licenses-grid">
+                <article class="license-item">
+                    <h3 data-i18n="licenses.item1.title">Строительно-монтажные работы</h3>
+                    <p data-i18n="licenses.item1.subtitle">Лицензия I категории</p>
+                </article>
+                <article class="license-item">
+                    <h3 data-i18n="licenses.item2.title">Проектирование зданий и сооружений</h3>
+                    <p data-i18n="licenses.item2.subtitle">Лицензия I категории</p>
+                </article>
+                <article class="license-item">
+                    <h3 data-i18n="licenses.item3.title">Инженерные изыскания</h3>
+                    <p data-i18n="licenses.item3.subtitle">Геодезические и геологические работы</p>
+                </article>
+                <article class="license-item">
+                    <h3 data-i18n="licenses.item4.title">Охрана окружающей среды</h3>
+                    <p data-i18n="licenses.item4.subtitle">Полный спектр услуг</p>
+                </article>
+                <article class="license-item">
+                    <h3 data-i18n="licenses.item5.title">Горнодобывающая и нефтедобывающая отрасль</h3>
+                    <p data-i18n="licenses.item5.subtitle">Лицензия на деятельность в отрасли</p>
+                </article>
+            </div>
+        </section>
+
         <section class="section projects" id="projects">
             <div class="section-heading centered">
                 <h2 data-i18n="projects.title">Текущие и перспективные проекты компании</h2>
@@ -192,8 +220,7 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <span>POLIGRAM</span>
-                <small>est. 2006</small>
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="POLIGRAM Logo" class="footer-logo">
             </div>
             <p data-i18n="footer.text">ТОО «Poligram» — инженерная компания с полным циклом проектирования и цифровыми решениями для крупных объектов.</p>
             <div class="footer-links">

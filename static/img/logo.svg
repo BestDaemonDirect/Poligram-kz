@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <!-- Background -->
+  <rect width="400" height="120" fill="none"/>
+  
+  <!-- POLIGRAM Text in blue -->
+  <text x="20" y="75" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#0f3264" letter-spacing="2">POLIGRAM</text>
+  
+  <!-- ATYRAU Text -->
+  <text x="20" y="105" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1d86ff" letter-spacing="1">ATYRAU</text>
+</svg>

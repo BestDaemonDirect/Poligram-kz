@@ -36,7 +36,7 @@ const createMobileMenu = () => {
 
     const description = document.createElement('p');
     description.className = 'mobile-nav-description';
-    description.textContent = 'Delivering full-cycle design, engineering and digital construction solutions for major projects.';
+    description.textContent = translations[localStorage.getItem("siteLang") || "ru"]?.["mobileMenu.description"] || "ТОО «Poligram» — инженерная компания с полным циклом проектирования и цифровыми решениями для крупных объектов.";
 
     const clonedNav = document.createElement('nav');
     clonedNav.className = 'mobile-nav';
@@ -188,7 +188,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 counters.forEach((counter) => counterObserver.observe(counter));
 
 const revealItems = document.querySelectorAll(
-    ".hero-content, .hero-meta, .section-heading, .section-copy, .engineer-photo, .stats-grid article, .glass-panel, .projects-grid article, .chart-shell, .contact-card, .logos-grid img"
+    ".hero-content, .hero-meta, .section-heading, .section-copy, .engineer-photo, .stats-grid article, .glass-panel, .license-item, .projects-grid article, .chart-shell, .contact-card, .logos-grid img"
 );
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -253,6 +253,18 @@ const translations = {
         "tech.license": "государственной лицензии на проектирование и СМР",
         "tech.category": "I категория",
         "tech.certification": "международная сертификация систем менеджмента, экологии и безопасности",
+        "licenses.title": "Лицензии",
+        "licenses.description": "Полный пакет лицензий для реализации проектов любой сложности в нефтегазовой и строительной отраслях",
+        "licenses.item1.title": "Строительно-монтажные работы",
+        "licenses.item1.subtitle": "Лицензия I категории",
+        "licenses.item2.title": "Проектирование зданий и сооружений",
+        "licenses.item2.subtitle": "Лицензия I категории",
+        "licenses.item3.title": "Инженерные изыскания",
+        "licenses.item3.subtitle": "Геодезические и геологические работы",
+        "licenses.item4.title": "Охрана окружающей среды",
+        "licenses.item4.subtitle": "Полный спектр услуг",
+        "licenses.item5.title": "Горнодобывающая и нефтедобывающая отрасль",
+        "licenses.item5.subtitle": "Лицензия на деятельность в отрасли",
         "projects.title": "Текущие и перспективные проекты компании",
         "projects.energy.title": "Энергетика",
         "projects.energy.description": "ПСД на строительство крупной водогрейной котельной мощностью 100 Гкал/час в г. Алматы для КГУ «Управление энергетики и водоснабжения».",
@@ -283,7 +295,8 @@ const translations = {
         "footer.links.contacts": "Контакты",
         "footer.links.partners": "Партнёры",
         "footer.links.about": "О компании",
-        "footer.copy": "© 2025 POLIGRAM. Все права защищены."
+        "footer.copy": "© 2025 POLIGRAM. Все права защищены.",
+        "mobileMenu.description": "ТОО «Poligram» — инженерная компания с полным циклом проектирования и цифровыми решениями для крупных объектов."
     },
     en: {
         "nav.about": "About",
@@ -318,6 +331,18 @@ const translations = {
         "tech.license": "state license for design and construction works",
         "tech.category": "Category I",
         "tech.certification": "international certification of management, environment, and safety systems",
+        "licenses.title": "Licenses",
+        "licenses.description": "Complete licensing package for implementing projects of any complexity in the oil and gas and construction industries",
+        "licenses.item1.title": "Construction and installation works",
+        "licenses.item1.subtitle": "Category I License",
+        "licenses.item2.title": "Design of buildings and structures",
+        "licenses.item2.subtitle": "Category I License",
+        "licenses.item3.title": "Engineering surveys",
+        "licenses.item3.subtitle": "Geodetic and geological work",
+        "licenses.item4.title": "Environmental protection",
+        "licenses.item4.subtitle": "Full range of services",
+        "licenses.item5.title": "Mining and oil and gas industry",
+        "licenses.item5.subtitle": "License for activities in the industry",
         "projects.title": "Current and future company projects",
         "projects.energy.title": "Energy",
         "projects.energy.description": "Design documentation for the construction of a large hot-water boiler house with a capacity of 100 Gcal/h in Almaty for KGU ‘Energy and Water Supply Management’.",
@@ -348,7 +373,8 @@ const translations = {
         "footer.links.contacts": "Contacts",
         "footer.links.partners": "Partners",
         "footer.links.about": "About",
-        "footer.copy": "© 2025 POLIGRAM. All rights reserved."
+        "footer.copy": "© 2025 POLIGRAM. All rights reserved.",
+        "mobileMenu.description": "LLP Poligram is an engineering company with full-cycle design and digital solutions for major facilities."
     },
     kk: {
         "nav.about": "Компания туралы",
@@ -383,6 +409,18 @@ const translations = {
         "tech.license": "жобалау және құрылыс жұмыстарын орындауға мемлекеттік лицензия",
         "tech.category": "I санат",
         "tech.certification": "басқару, экология және қауіпсіздік жүйелерінің халықаралық сертификаты",
+        "licenses.title": "Лицензиялар",
+        "licenses.description": "Мұнай-газ және құрылыс салаларындағы кез келген күрделіліктің жобаларын іске асыру үшін толық лицензия пакеті",
+        "licenses.item1.title": "Құрылыс-монтаж жұмыстары",
+        "licenses.item1.subtitle": "I санатты лицензия",
+        "licenses.item2.title": "Ғимараттар мен құрылыстарды жобалау",
+        "licenses.item2.subtitle": "I санатты лицензия",
+        "licenses.item3.title": "Инженерлік зерттеулер",
+        "licenses.item3.subtitle": "Геодезиялық және геологиялық жұмыстар",
+        "licenses.item4.title": "Айналасындағы ортаны қорғау",
+        "licenses.item4.subtitle": "Қызметтердің толық спектрі",
+        "licenses.item5.title": "Тау қазу және мұнай-газ өнеркәсібі",
+        "licenses.item5.subtitle": "Өнеркәсіптегі қызметтердің лицензиясы",
         "projects.title": "Компанияның ағымдағы және перспективалы жобалары",
         "projects.energy.title": "Энергетика",
         "projects.energy.description": "Алматыда КГУ «Энергетика және сумен жабдықтау басқармасы» үшін 100 Гкал/сағ қуатты ірі ыстық су қазандық үйін салуға арналған жобалық-сметалық құжаттама.",
@@ -413,7 +451,8 @@ const translations = {
         "footer.links.contacts": "Байланыс",
         "footer.links.partners": "Серіктестер",
         "footer.links.about": "Компания туралы",
-        "footer.copy": "© 2025 POLIGRAM. Барлық құқықтар қорғалған."
+        "footer.copy": "© 2025 POLIGRAM. Барлық құқықтар қорғалған.",
+        "mobileMenu.description": "ТОО «Poligram» — толық циклді жобалау және ірі нысандарға арналған цифрлық шешімдер ұсынатын инженерлік компания."
     }
 };
 let currentChartLang = localStorage.getItem("siteLang") || "ru";
